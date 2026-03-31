@@ -1,6 +1,5 @@
 // ─────────────────────────────────────────────────────────────────────────────
-// src/components/layout/Header.tsx  — VERSION MISE À JOUR
-// Ajouts : lien CV dans la nav + LangSwitcher (drapeaux FR/EN)
+// src/components/layout/Header.tsx 
 // ─────────────────────────────────────────────────────────────────────────────
 
 import { useState, useEffect } from 'react'
@@ -101,16 +100,12 @@ export default function Header() {
           <LangSwitcher />
 
           {/* Bouton Télécharger CV */}
-          <button
-            onClick={() => {
-              scrollTo('#cv')
-              // Petit délai pour que le scroll se termine puis déclenche l'impression
-              setTimeout(() => window.print(), 600)
-            }}
-            className="btn-primary text-xs px-4 py-2"
-          >
-            {n.downloadCv}
-          </button>
+<button
+  onClick={() => scrollTo('#cv')}
+  className="btn-primary text-xs px-4 py-2"
+>
+  Voir mon CV
+</button>
         </div>
 
         {/* ── TOGGLE MOBILE ──────────────────────────────────────────── */}

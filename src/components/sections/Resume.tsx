@@ -126,24 +126,6 @@ export default function Resume() {
             ))}
           </div>
         </div>
-
-        {/* Download CV CTA */}
-        <div className="reveal mt-16 text-center">
-          <div className="glass inline-flex flex-col sm:flex-row items-center gap-6 rounded-3xl px-8 py-6 max-w-lg mx-auto">
-            <div className="text-left">
-              <p className="font-syne font-bold text-[#1e1b4b]">Mon CV complet</p>
-              <p className="text-xs text-[#9ca3af] mt-0.5">Toutes mes expériences et compétences en détail</p>
-            </div>
-            <a
-              href="/cv.pdf"
-              download
-              className="btn-primary whitespace-nowrap flex-shrink-0"
-            >
-              <Download size={16} />
-              Télécharger CV
-            </a>
-          </div>
-        </div>
       </div>
     </section>
   )

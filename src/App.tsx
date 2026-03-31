@@ -42,7 +42,6 @@ export default function App() {
         <Projects />
         <Resume />
         <Contact />
-        {/* ↓ Section CV — accessible via #cv dans la nav */}
         <CVPage />
       </main>
 

@@ -1,8 +1,3 @@
-// ─────────────────────────────────────────────────────────────────────────────
-// src/components/ui/LangSwitcher.tsx
-// Bouton drapeau FR / EN dans le Header
-// ─────────────────────────────────────────────────────────────────────────────
-
 import { useLang } from '../../i18n/LangContext'
 
 // SVG drapeaux inline (pas de dépendance externe)

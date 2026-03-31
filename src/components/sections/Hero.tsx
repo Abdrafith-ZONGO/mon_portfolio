@@ -3,8 +3,8 @@ import { Github, Linkedin, Download, ArrowDown, ChevronRight } from 'lucide-reac
 import { stats } from '../../data/experiences'
 
 const socials = [
-  { icon: Github,   href: 'https://github.com/tonpseudo',     label: 'GitHub' },
-  { icon: Linkedin, href: 'https://linkedin.com/in/tonpseudo', label: 'LinkedIn' },
+  { icon: Github,   href: 'https://github.com/Abdrafith-ZONGO',     label: 'GitHub' },
+  { icon: Linkedin, href: 'https://www.linkedin.com/in/abdrafith-zongo-31a6b9265', label: 'LinkedIn' },
 ]
 
 export default function Hero() {
@@ -51,12 +51,12 @@ export default function Hero() {
             {/* Available badge */}
             <div className="hero-anim opacity-0 inline-flex items-center gap-2 badge mb-6">
               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse-slow" />
-              Disponible pour missions &amp; collaborations
+              Ouvert aux collaborations
             </div>
 
             {/* Name */}
             <h1 className="hero-anim opacity-0 font-syne font-extrabold text-5xl sm:text-6xl lg:text-7xl text-[#1e1b4b] leading-[1.0] tracking-tight mb-4">
-              Ton Prénom<br />
+              Abdrafith <br />
               <span
                 className="relative inline-block"
                 style={{
@@ -65,7 +65,7 @@ export default function Hero() {
                   WebkitTextFillColor: 'transparent',
                 }}
               >
-                Ton Nom
+                ZONGO
               </span>
             </h1>
 
@@ -84,16 +84,34 @@ export default function Hero() {
               </span>
             </div>
 
-            {/* Tagline */}
-            <p className="hero-anim opacity-0 text-[#4b5563] text-lg leading-relaxed max-w-lg mx-auto lg:mx-0 mb-8">
-              Je transforme les données en décisions et les idées en applications.
-              Basé à <strong className="text-[#1e1b4b]">Ouagadougou</strong>, disponible en remote.
-            </p>
-
-            {/* Tech stack strip */}
-            <p className="hero-anim opacity-0 font-mono text-xs text-[#9ca3af] mb-8 tracking-wide">
-              React · TypeScript · Python · SQL · Power BI · Node.js
-            </p>
+                  {/* Tagline - Deux volets */}
+                  <p className="hero-anim opacity-0 text-[#4b5563] text-lg leading-relaxed max-w-lg mx-auto lg:mx-0 mb-3">
+                    <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-lavender-100 text-lavender-600 mr-2">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                        <rect x="2" y="3" width="20" height="14" rx="2" stroke="currentColor" fill="none"/>
+                        <path d="M8 21H16" stroke="currentColor" strokeLinecap="round"/>
+                        <path d="M12 17V21" stroke="currentColor" strokeLinecap="round"/>
+                        <path d="M12 7V3" stroke="currentColor" strokeLinecap="round"/>
+                      </svg>
+                    </span>
+                    <strong className="text-[#1e1b4b] font-semibold">Développeur Full Stack</strong> — je conçois des sites web, des applications web, des applications mobiles et j'intègre des solutions IA. Je transforme vos idées en produits digitaux.
+                  </p>
+                  <p className="hero-anim opacity-0 text-[#4b5563] text-lg leading-relaxed max-w-lg mx-auto lg:mx-0 mb-6">
+                    <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-lavender-100 text-lavender-600 mr-2">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                        <path d="M3 3V21H21V3H3Z" stroke="currentColor" fill="none"/>
+                        <path d="M7 7H17" stroke="currentColor" strokeLinecap="round"/>
+                        <path d="M7 12H14" stroke="currentColor" strokeLinecap="round"/>
+                        <path d="M7 17H11" stroke="currentColor" strokeLinecap="round"/>
+                      </svg>
+                    </span>
+                    <strong className="text-[#1e1b4b] font-semibold">Data Analyst</strong> — j'analyse, modélise et visualise vos données pour en faire un levier stratégique et éclairer vos décisions.
+                  </p>
+                  <p className="hero-anim opacity-0 text-sm text-[#9ca3af] flex items-center gap-3 justify-center lg:justify-start">
+                    <span>📍 Basé à Ouagadougou</span>
+                    <span className="w-1 h-1 rounded-full bg-lavender-300"></span>
+                    <span>🌍 Disponible en remote</span>
+                  </p>
 
             {/* CTA buttons */}
             <div className="hero-anim opacity-0 flex flex-wrap justify-center lg:justify-start gap-3 mb-10">
@@ -103,9 +121,12 @@ export default function Hero() {
               >
                 Voir mes projets <ChevronRight size={16} />
               </button>
-              <a href="/cv.pdf" download className="btn-secondary">
-                <Download size={16} /> Télécharger CV
-              </a>
+          <button
+            onClick={() => document.querySelector('#cv')?.scrollIntoView({ behavior: 'smooth' })}
+            className="btn-secondary"
+          >
+            <Download size={16} /> Voir mon CV
+          </button>
             </div>
 
             {/* Social links */}
@@ -139,7 +160,7 @@ export default function Hero() {
                 >
                   {/* Replace src with your actual photo path */}
                   <img
-                    src="/images/photo.jpg"
+                    src="/src/assets/photoProfil.jpeg"
                     alt="Photo de profil"
                     className="w-full h-full object-cover"
                     onError={(e) => {
@@ -151,7 +172,7 @@ export default function Hero() {
                           <svg width="64" height="64" viewBox="0 0 24 24" fill="rgba(139,92,246,0.4)">
                             <path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/>
                           </svg>
-                          <span style="font-size:11px;color:rgba(139,92,246,0.6);font-family:monospace">photo.jpg</span>
+                          <span style="font-size:11px;color:rgba(139,92,246,0.6);font-family:monospace">photoProfil.jpeg</span>
                         </div>
                       `
                     }}

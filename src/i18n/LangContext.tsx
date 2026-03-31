@@ -1,11 +1,7 @@
-// ─────────────────────────────────────────────────────────────────────────────
-// src/i18n/LangContext.tsx
-// Context React pour la langue — wrap <App> avec <LangProvider>
-// Usage : const { lang, setLang, tr } = useLang()
-// ─────────────────────────────────────────────────────────────────────────────
-
 import { createContext, useContext, useState, type ReactNode } from 'react'
 import { t, type Lang } from './translations'
+
+// Plan de ce que contiendra le contexte de langue
 
 interface LangContextValue {
   lang:    Lang
@@ -32,6 +28,6 @@ export function LangProvider({ children }: { children: ReactNode }) {
 // Hook raccourci
 export function useLang() {
   const ctx = useContext(LangContext)
-  if (!ctx) throw new Error('useLang must be used inside <LangProvider>')
+  if (!ctx) throw new Error('useLang doit être utilisé a l\'intérieur de <LangProvider>')
   return ctx
 }

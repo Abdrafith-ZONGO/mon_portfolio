@@ -1,8 +1,3 @@
-// ─────────────────────────────────────────────────────────────────────────────
-// src/i18n/translations.ts
-// Toutes les traductions FR / EN du portfolio
-// ─────────────────────────────────────────────────────────────────────────────
-
 export type Lang = 'fr' | 'en'
 
 export const t = {
