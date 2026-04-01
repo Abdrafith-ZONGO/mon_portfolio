@@ -1,11 +1,11 @@
-// src/components/sections/CVPage.tsx - Version avec design amélioré
+// src/components/sections/CVPage.tsx - Version finale optimisée
 import { useRef } from 'react';
 import { 
   ArrowLeft, MapPin, Mail, Phone, User, ExternalLink, Download, 
   Building2, Award, Briefcase, Code2, BarChart3, GraduationCap, 
   Languages, Heart, Github, Linkedin, Globe 
 } from 'lucide-react';
-import { PDFViewer, pdf, Document, Page, Text, View, StyleSheet, Image, Link } from '@react-pdf/renderer';
+import { PDFViewer, pdf, Document, Page, Text, View, StyleSheet, Image } from '@react-pdf/renderer';
 
 // ═════════════════════════════════════════════════════════════════════════════
 // DONNÉES CV
@@ -35,8 +35,8 @@ const DATA = {
   ],
 
   formations: [
-    { date: 'Depuis oct. 2025', title: 'Master en Sciences des Données (Data Science)', org: 'Université Joseph KI-ZERBO — Ouagadougou' },
-    { date: 'Oct. 2022 – Juil. 2025', title: 'Licence en Statistiques et Informatique', org: 'Université Nazi Boni — Bobo-Dioulasso' },
+    { date: 'Depuis oct. 2025', title: 'Master en Sciences des Données', org: 'Univ. Joseph KI-ZERBO' },
+    { date: 'Oct. 2022 – Juil. 2025', title: 'Licence Statistiques & Info', org: 'Univ. Nazi Boni' },
     { date: '2020 – 2022', title: 'Baccalauréat série D', org: 'Lycée Provincial Boromo' },
   ],
 
@@ -44,81 +44,80 @@ const DATA = {
     {
       date: 'Nov. 2025 – Présent',
       title: 'Développeur Informatique',
-      org: 'Telia Informatique — Ouagadougou',
+      org: 'Telia Informatique',
       bullets: [
-        'Pilotage du projet GEC/SAE avec Maarch Courier et Maarch Archives',
-        'Déploiement des solutions Maarch à la LONAB et à la CNSS',
-        'Participation à la conception du logiciel de gestion budgétaire à la SONAGESS',
-        'Contribution au développement du logiciel de gestion budgétaire pour le FONDS SPORT du Burkina',
-        'Développement et maintenance de solutions Odoo ERP',
+        'Pilotage du projet GEC/SAE avec Maarch Courier et Archives',
+        'Déploiement Maarch à la LONAB et CNSS',
+        'Conception logiciel gestion budgétaire (SONAGESS & FONDS SPORT)',
+        'Développement et maintenance Odoo ERP',
       ],
-      tags: ['Maarch', 'Odoo', 'Python', 'Déploiement'],
+      tags: ['Maarch', 'Odoo', 'Python'],
     },
     {
       date: 'Juin 2025 – Présent',
-      title: 'Chargé du suivi et évaluation',
+      title: 'Chargé suivi & évaluation',
       org: 'SBUM — Bobo-Dioulasso',
       bullets: [
         'Suivi et évaluation des activités logistiques',
         'Analyse des données de participation',
-        'Reporting auprès des partenaires',
+        'Reporting stratégique',
       ],
-      tags: ['Reporting', 'Évaluation'],
+      tags: ['Reporting', 'Analyse'],
     },
     {
       date: 'Mars – Juin 2025',
       title: 'Stage en Statistiques',
       org: 'INSD — Ouagadougou',
       bullets: [
-        'Traitement et analyse de données statistiques',
-        'Automatisation des rapports avec Power BI',
+        'Traitement de données massives',
+        'Automatisation des rapports Power BI',
       ],
       tags: ['Power BI', 'Statistiques'],
     },
     {
       date: 'Juil. – Sept. 2023',
-      title: 'Stage en maintenance IT',
+      title: 'Stage maintenance IT',
       org: 'CBIT — Bobo-Dioulasso',
       bullets: [
-        'Maintenance et diagnostic informatique',
-        'Installation de systèmes',
+        'Diagnostic matériel et logiciel',
+        'Installation systèmes',
       ],
-      tags: ['Maintenance', 'Support'],
+      tags: ['Hardware', 'OS'],
     },
   ],
 
   projects: [
     {
-      name: 'Application de Gestion d\'École (Odoo)',
-      description: 'ERP complet pour la gestion d\'établissement scolaire : inscriptions, notes, paiements',
+      name: 'Gestion École (Odoo)',
+      description: 'ERP complet : inscriptions, notes, paiements',
       stack: 'Odoo, Python, PostgreSQL',
       link: null,
     },
     {
-      name: 'Laiterie Nasoo',
-      description: 'Site e-commerce pour la vente de produits laitiers locaux',
-      stack: 'React, Prisma, Supabase, Railway',
-      link: 'https://laiterienasoo.com',
+      name: 'Laiterie NASOO',
+      description: 'E-commerce produits laitiers locaux',
+      stack: 'React, Prisma, Supabase',
+      link: 'laiterienasoo.com',
     },
     {
       name: 'Parapharmacie Dalwo',
-      description: 'Site vitrine avec catalogue de produits',
-      stack: 'React, TypeScript, Tailwind',
-      link: 'https://parapharmaciedalwo.com',
+      description: 'Catalogue digital et vitrine',
+      stack: 'React, Tailwind',
+      link: 'parapharmaciedalwo.com',
     },
   ],
 
   dataSkills: [
-    'Maîtrise des méthodes statistiques descriptives et inférentielles',
-    'Expérience en modélisation (régressions, tests d\'hypothèses)',
-    'Création de tableaux de bord interactifs avec Power BI',
-    'Capacité d\'analyse, rigueur et adaptabilité',
+    'Statistiques descriptives et inférentielles',
+    'Modélisation (régressions, tests)',
+    'Tableaux de bord Power BI',
+    'Rigueur analytique et adaptabilité',
   ],
 
   assoc: {
     date: '2022 – Août 2025',
-    title: 'Délégué aux activités sportives',
-    org: 'CESI — UNB, Bobo-Dioulasso',
+    title: 'Délégué activités sportives',
+    org: 'CESI — UNB',
     bullets: [
       'Organisation d\'événements sportifs inter-facultés',
       'Coordination des équipes',
@@ -127,111 +126,121 @@ const DATA = {
 };
 
 // ═════════════════════════════════════════════════════════════════════════════
-// STYLES PDF - DESIGN MODERNE ET LISIBLE
+// STYLES PDF - TAILLES LÉGÈREMENT AUGMENTÉES, COULEURS CLAIRES SUR FOND SOMBRE
 // ═════════════════════════════════════════════════════════════════════════════
 const styles = StyleSheet.create({
   page: {
-    padding: 35,
+    padding: 30,
     fontFamily: 'Helvetica',
     backgroundColor: '#ffffff',
+    position: 'relative',
   },
-  // Header avec dégradé
   header: {
     backgroundColor: '#0f172a',
-    padding: 25,
-    marginBottom: 25,
+    padding: 20,
+    marginBottom: 20,
     flexDirection: 'row',
     alignItems: 'center',
-    borderRadius: 12,
+    borderRadius: 10,
   },
   photo: {
-    width: 80,
-    height: 80,
-    borderRadius: 40,
-    marginRight: 25,
-    borderWidth: 3,
+    width: 75,
+    height: 75,
+    borderRadius: 38,
+    marginRight: 20,
+    borderWidth: 2,
     borderColor: '#3b82f6',
   },
   headerText: {
     flex: 1,
   },
   name: {
-    fontSize: 28,
+    fontSize: 26,
     fontWeight: 'bold',
     color: '#ffffff',
-    marginBottom: 6,
-    letterSpacing: 1,
+    marginBottom: 4,
   },
   title: {
-    fontSize: 14,
-    color: '#60a5fa',
-    marginBottom: 12,
-    fontWeight: 'medium',
+    fontSize: 12,
+    color: '#93c5fd',
+    marginBottom: 8,
   },
   contactInfo: {
-    fontSize: 9,
-    color: '#cbd5e1',
+    fontSize: 8,
+    color: '#e2e8f0',
     flexDirection: 'row',
-    gap: 15,
+    gap: 12,
     flexWrap: 'wrap',
+    marginBottom: 6,
   },
   contactItem: {
     flexDirection: 'row',
     alignItems: 'center',
     gap: 4,
   },
-  // Liens sociaux
+  contactLabel: {
+    fontSize: 8,
+    color: '#93c5fd',
+    fontWeight: 'bold',
+  },
+  contactText: {
+    fontSize: 8,
+    color: '#e2e8f0',
+  },
   socialLinks: {
     flexDirection: 'row',
-    gap: 20,
-    marginTop: 12,
+    gap: 16,
+    marginTop: 6,
   },
-  socialLink: {
+  socialItem: {
     flexDirection: 'row',
     alignItems: 'center',
     gap: 4,
-    fontSize: 9,
-    color: '#60a5fa',
   },
-  // Layout principal
+  socialLabel: {
+    fontSize: 8,
+    color: '#93c5fd',
+    fontWeight: 'bold',
+  },
+  socialText: {
+    fontSize: 8,
+    color: '#cbd5e1',
+  },
   container: {
     flexDirection: 'row',
-    gap: 25,
+    gap: 20,
   },
   sidebar: {
-    width: '32%',
+    width: '33%',
     backgroundColor: '#f8fafc',
-    padding: 18,
-    borderRadius: 12,
+    padding: 14,
+    borderRadius: 10,
   },
   content: {
-    width: '68%',
-    padding: 5,
+    width: '67%',
+    padding: 2,
   },
-  // Sections
   sectionTitle: {
     fontSize: 11,
     fontWeight: 'bold',
-    color: '#3b82f6',
-    marginBottom: 12,
+    color: '#2563eb',
+    marginBottom: 8,
     textTransform: 'uppercase',
-    letterSpacing: 1.5,
-    borderBottomWidth: 2,
-    borderBottomColor: '#3b82f6',
-    paddingBottom: 6,
+    letterSpacing: 1,
+    borderBottomWidth: 1.5,
+    borderBottomColor: '#2563eb',
+    paddingBottom: 4,
   },
   profileText: {
     fontSize: 9,
-    lineHeight: 1.5,
-    color: '#1e293b',
-    marginBottom: 15,
+    lineHeight: 1.4,
+    color: '#0f172a',
+    marginBottom: 12,
   },
-  // Langues
   langItem: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginBottom: 10,
-    paddingVertical: 4,
+    marginBottom: 6,
   },
   langName: {
     fontSize: 9,
@@ -240,36 +249,33 @@ const styles = StyleSheet.create({
   },
   langLevel: {
     fontSize: 9,
-    color: '#3b82f6',
+    color: '#2563eb',
   },
-  // Compétences
   skillBadge: {
     fontSize: 8,
     backgroundColor: '#ffffff',
-    paddingVertical: 4,
-    paddingHorizontal: 8,
-    borderRadius: 6,
+    paddingVertical: 3,
+    paddingHorizontal: 6,
+    borderRadius: 4,
     borderWidth: 1,
-    borderColor: '#e2e8f0',
-    marginRight: 6,
-    marginBottom: 6,
+    borderColor: '#cbd5e1',
+    marginRight: 4,
+    marginBottom: 4,
     color: '#0f172a',
-    fontWeight: 'medium',
   },
   skillContainer: {
     flexDirection: 'row',
     flexWrap: 'wrap',
-    marginBottom: 15,
+    marginBottom: 12,
   },
-  // Expériences
   experienceItem: {
-    marginBottom: 18,
+    marginBottom: 12,
   },
   expHeader: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'baseline',
-    marginBottom: 4,
+    marginBottom: 2,
   },
   expTitle: {
     fontSize: 10,
@@ -278,111 +284,109 @@ const styles = StyleSheet.create({
   },
   expDate: {
     fontSize: 8,
-    color: '#3b82f6',
-    fontWeight: 'medium',
+    color: '#2563eb',
   },
   expOrg: {
     fontSize: 9,
-    color: '#64748b',
-    marginBottom: 6,
+    color: '#475569',
+    marginBottom: 4,
     fontStyle: 'italic',
   },
   expBullet: {
     flexDirection: 'row',
-    marginBottom: 4,
+    marginBottom: 2,
     alignItems: 'flex-start',
   },
   bulletPoint: {
-    width: 4,
-    height: 4,
-    borderRadius: 2,
-    backgroundColor: '#3b82f6',
-    marginRight: 8,
-    marginTop: 4,
+    width: 3,
+    height: 3,
+    borderRadius: 1.5,
+    backgroundColor: '#2563eb',
+    marginRight: 6,
+    marginTop: 3,
   },
   expBulletText: {
     fontSize: 8,
-    color: '#334155',
+    color: '#1e293b',
     flex: 1,
-    lineHeight: 1.4,
+    lineHeight: 1.3,
   },
   tagContainer: {
     flexDirection: 'row',
     flexWrap: 'wrap',
-    marginTop: 6,
-    gap: 4,
+    marginTop: 4,
+    gap: 3,
   },
   tag: {
     fontSize: 7,
-    paddingVertical: 2,
-    paddingHorizontal: 6,
-    backgroundColor: '#eef2ff',
-    borderRadius: 4,
-    color: '#3b82f6',
-    fontWeight: 'medium',
+    paddingVertical: 1,
+    paddingHorizontal: 5,
+    backgroundColor: '#dbeafe',
+    borderRadius: 3,
+    color: '#1e40af',
   },
-  // Projets
   projectItem: {
-    marginBottom: 16,
-    paddingBottom: 12,
-    borderBottomWidth: 1,
+    marginBottom: 12,
+    paddingBottom: 8,
+    borderBottomWidth: 0.5,
     borderBottomColor: '#e2e8f0',
   },
   projectName: {
     fontSize: 10,
     fontWeight: 'bold',
     color: '#0f172a',
-    marginBottom: 4,
+    marginBottom: 2,
   },
   projectDesc: {
     fontSize: 8,
-    color: '#475569',
-    marginBottom: 4,
-    lineHeight: 1.4,
+    color: '#334155',
+    marginBottom: 2,
+    lineHeight: 1.3,
   },
   projectStack: {
     fontSize: 7,
-    color: '#3b82f6',
-    fontFamily: 'Courier',
-    marginBottom: 4,
+    color: '#2563eb',
+    marginBottom: 2,
   },
   projectLink: {
     fontSize: 7,
-    color: '#3b82f6',
-    textDecoration: 'underline',
-    marginTop: 4,
+    color: '#475569',
+    marginTop: 2,
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 3,
   },
-  // Data skills
   dataSkillItem: {
     flexDirection: 'row',
-    marginBottom: 8,
+    marginBottom: 6,
     alignItems: 'flex-start',
   },
   dataSkillBullet: {
-    width: 4,
-    height: 4,
-    borderRadius: 2,
-    backgroundColor: '#3b82f6',
-    marginRight: 8,
-    marginTop: 3,
+    width: 3,
+    height: 3,
+    borderRadius: 1.5,
+    backgroundColor: '#2563eb',
+    marginRight: 6,
+    marginTop: 2,
   },
   dataSkillText: {
     fontSize: 8,
-    color: '#334155',
+    color: '#1e293b',
     flex: 1,
-    lineHeight: 1.4,
+    lineHeight: 1.3,
   },
-  // Signature
-  signatureContainer: {
+  signatureWrapper: {
     position: 'absolute',
-    bottom: 35,
-    left: 35,
-    right: 35,
+    bottom: 30,
+    left: 30,
+    right: 30,
+  },
+  signatureContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     borderTopWidth: 1,
     borderTopColor: '#e2e8f0',
-    paddingTop: 20,
+    paddingTop: 15,
   },
   signatureItem: {
     flex: 1,
@@ -391,24 +395,23 @@ const styles = StyleSheet.create({
   signatureDate: {
     fontSize: 8,
     color: '#475569',
-    marginBottom: 20,
+    marginBottom: 15,
   },
   signatureLine: {
-    borderTopWidth: 1,
+    borderTopWidth: 0.5,
     borderTopColor: '#cbd5e1',
     width: '70%',
-    paddingTop: 4,
-  },
-  signatureLabel: {
-    fontSize: 7,
-    color: '#94a3b8',
-    textAlign: 'center',
+    paddingTop: 3,
   },
   signatureName: {
     fontSize: 9,
     fontWeight: 'bold',
     color: '#0f172a',
-    marginBottom: 20,
+    marginBottom: 15,
+  },
+  contentWithPadding: {
+    flex: 1,
+    paddingBottom: 70,
   },
 });
 
@@ -419,7 +422,6 @@ const CVPDFDocument = () => (
   <Document>
     {/* PAGE 1 */}
     <Page size="A4" style={styles.page}>
-      {/* Header avec photo et infos */}
       <View style={styles.header}>
         <Image src={DATA.photo} style={styles.photo} />
         <View style={styles.headerText}>
@@ -427,111 +429,110 @@ const CVPDFDocument = () => (
           <Text style={styles.title}>Développeur Full Stack & Data Analyst</Text>
           <View style={styles.contactInfo}>
             <View style={styles.contactItem}>
-              <Text>📧</Text>
-              <Text>{DATA.email}</Text>
+              <Text style={styles.contactLabel}>Email:</Text>
+              <Text style={styles.contactText}>{DATA.email}</Text>
             </View>
             <View style={styles.contactItem}>
-              <Text>📱</Text>
-              <Text>{DATA.phone}</Text>
+              <Text style={styles.contactLabel}>Tel:</Text>
+              <Text style={styles.contactText}>{DATA.phone}</Text>
             </View>
             <View style={styles.contactItem}>
-              <Text>📍</Text>
-              <Text>{DATA.location}</Text>
+              <Text style={styles.contactLabel}>Adresse:</Text>
+              <Text style={styles.contactText}>{DATA.location}</Text>
             </View>
           </View>
           <View style={styles.socialLinks}>
-            <Link src={DATA.github} style={styles.socialLink}>
-              <Text>🐙</Text>
-              <Text>{DATA.githubUsername}</Text>
-            </Link>
-            <Link src={DATA.linkedin} style={styles.socialLink}>
-              <Text>🔗</Text>
-              <Text>{DATA.linkedinUsername}</Text>
-            </Link>
+            <View style={styles.socialItem}>
+              <Text style={styles.socialLabel}>GitHub:</Text>
+              <Text style={styles.socialText}>{DATA.githubUsername}</Text>
+            </View>
+            <View style={styles.socialItem}>
+              <Text style={styles.socialLabel}>LinkedIn:</Text>
+              <Text style={styles.socialText}>{DATA.linkedinUsername}</Text>
+            </View>
           </View>
         </View>
       </View>
 
-      {/* Contenu principal */}
-      <View style={styles.container}>
-        {/* Sidebar gauche */}
-        <View style={styles.sidebar}>
-          <View>
-            <Text style={styles.sectionTitle}>Profil</Text>
-            <Text style={styles.profileText}>
-              Développeur Full Stack et Data Analyst passionné, avec une double compétence 
-              en développement web et analyse de données. Je transforme les idées en 
-              applications performantes et les données en décisions stratégiques.
-            </Text>
-          </View>
+      <View style={styles.contentWithPadding}>
+        <View style={styles.container}>
+          <View style={styles.sidebar}>
+            <View>
+              <Text style={styles.sectionTitle}>Profil</Text>
+              <Text style={styles.profileText}>
+                Développeur Full Stack et Data Analyst avec une double compétence en 
+                développement web et analyse de données. Je transforme les idées en 
+                applications performantes et les données en décisions stratégiques.
+              </Text>
+            </View>
 
-          <View>
-            <Text style={styles.sectionTitle}>Langues</Text>
-            {DATA.langs.map((lang, i) => (
-              <View key={i} style={styles.langItem}>
-                <Text style={styles.langName}>{lang.name}</Text>
-                <Text style={styles.langLevel}>{lang.level}</Text>
+            <View>
+              <Text style={styles.sectionTitle}>Langues</Text>
+              {DATA.langs.map((lang, i) => (
+                <View key={i} style={styles.langItem}>
+                  <Text style={styles.langName}>{lang.name}</Text>
+                  <Text style={styles.langLevel}>{lang.level}</Text>
+                </View>
+              ))}
+            </View>
+
+            <View>
+              <Text style={styles.sectionTitle}>Compétences</Text>
+              <View style={styles.skillContainer}>
+                {DATA.chips.map((skill, i) => (
+                  <Text key={i} style={styles.skillBadge}>{skill}</Text>
+                ))}
               </View>
-            ))}
-          </View>
+            </View>
 
-          <View>
-            <Text style={styles.sectionTitle}>Compétences</Text>
-            <View style={styles.skillContainer}>
-              {DATA.chips.map((skill, i) => (
-                <Text key={i} style={styles.skillBadge}>{skill}</Text>
+            <View>
+              <Text style={styles.sectionTitle}>Data & Analytics</Text>
+              {DATA.dataSkills.map((skill, i) => (
+                <View key={i} style={styles.dataSkillItem}>
+                  <View style={styles.dataSkillBullet} />
+                  <Text style={styles.dataSkillText}>{skill}</Text>
+                </View>
               ))}
             </View>
           </View>
 
-          <View>
-            <Text style={styles.sectionTitle}>Data & Analytics</Text>
-            {DATA.dataSkills.map((skill, i) => (
-              <View key={i} style={styles.dataSkillItem}>
-                <View style={styles.dataSkillBullet} />
-                <Text style={styles.dataSkillText}>{skill}</Text>
-              </View>
-            ))}
-          </View>
-        </View>
-
-        {/* Contenu droit */}
-        <View style={styles.content}>
-          <View>
-            <Text style={styles.sectionTitle}>Formations</Text>
-            {DATA.formations.map((formation, i) => (
-              <View key={i} style={styles.experienceItem}>
-                <View style={styles.expHeader}>
-                  <Text style={styles.expTitle}>{formation.title}</Text>
-                  <Text style={styles.expDate}>{formation.date}</Text>
-                </View>
-                <Text style={styles.expOrg}>{formation.org}</Text>
-              </View>
-            ))}
-          </View>
-
-          <View>
-            <Text style={styles.sectionTitle}>Expériences Professionnelles</Text>
-            {DATA.experiences.slice(0, 2).map((exp, i) => (
-              <View key={i} style={styles.experienceItem}>
-                <View style={styles.expHeader}>
-                  <Text style={styles.expTitle}>{exp.title}</Text>
-                  <Text style={styles.expDate}>{exp.date}</Text>
-                </View>
-                <Text style={styles.expOrg}>{exp.org}</Text>
-                {exp.bullets.map((bullet, j) => (
-                  <View key={j} style={styles.expBullet}>
-                    <View style={styles.bulletPoint} />
-                    <Text style={styles.expBulletText}>{bullet}</Text>
+          <View style={styles.content}>
+            <View>
+              <Text style={styles.sectionTitle}>Formations</Text>
+              {DATA.formations.map((formation, i) => (
+                <View key={i} style={styles.experienceItem}>
+                  <View style={styles.expHeader}>
+                    <Text style={styles.expTitle}>{formation.title}</Text>
+                    <Text style={styles.expDate}>{formation.date}</Text>
                   </View>
-                ))}
-                <View style={styles.tagContainer}>
-                  {exp.tags.map((tag, j) => (
-                    <Text key={j} style={styles.tag}>{tag}</Text>
-                  ))}
+                  <Text style={styles.expOrg}>{formation.org}</Text>
                 </View>
-              </View>
-            ))}
+              ))}
+            </View>
+
+            <View>
+              <Text style={styles.sectionTitle}>Expériences</Text>
+              {DATA.experiences.slice(0, 3).map((exp, i) => (
+                <View key={i} style={styles.experienceItem}>
+                  <View style={styles.expHeader}>
+                    <Text style={styles.expTitle}>{exp.title}</Text>
+                    <Text style={styles.expDate}>{exp.date}</Text>
+                  </View>
+                  <Text style={styles.expOrg}>{exp.org}</Text>
+                  {exp.bullets.map((bullet, j) => (
+                    <View key={j} style={styles.expBullet}>
+                      <View style={styles.bulletPoint} />
+                      <Text style={styles.expBulletText}>{bullet}</Text>
+                    </View>
+                  ))}
+                  <View style={styles.tagContainer}>
+                    {exp.tags.map((tag, j) => (
+                      <Text key={j} style={styles.tag}>{tag}</Text>
+                    ))}
+                  </View>
+                </View>
+              ))}
+            </View>
           </View>
         </View>
       </View>
@@ -539,81 +540,82 @@ const CVPDFDocument = () => (
 
     {/* PAGE 2 */}
     <Page size="A4" style={styles.page}>
-      <View style={styles.container}>
-        <View style={styles.sidebar}>
-          <View>
-            <Text style={styles.sectionTitle}>Projets Personnels</Text>
-            {DATA.projects.map((project, i) => (
-              <View key={i} style={styles.projectItem}>
-                <Text style={styles.projectName}>{project.name}</Text>
-                <Text style={styles.projectDesc}>{project.description}</Text>
-                <Text style={styles.projectStack}>{project.stack}</Text>
-                {project.link && (
-                  <Link src={project.link} style={styles.projectLink}>
-                    🔗 {project.link}
-                  </Link>
-                )}
-              </View>
-            ))}
-          </View>
-        </View>
-
-        <View style={styles.content}>
-          <View>
-            <Text style={styles.sectionTitle}>Expériences (suite)</Text>
-            {DATA.experiences.slice(2, 4).map((exp, i) => (
-              <View key={i} style={styles.experienceItem}>
-                <View style={styles.expHeader}>
-                  <Text style={styles.expTitle}>{exp.title}</Text>
-                  <Text style={styles.expDate}>{exp.date}</Text>
+      <View style={styles.contentWithPadding}>
+        <View style={styles.container}>
+          <View style={styles.sidebar}>
+            <View>
+              <Text style={styles.sectionTitle}>Projets</Text>
+              {DATA.projects.map((project, i) => (
+                <View key={i} style={styles.projectItem}>
+                  <Text style={styles.projectName}>{project.name}</Text>
+                  <Text style={styles.projectDesc}>{project.description}</Text>
+                  <Text style={styles.projectStack}>{project.stack}</Text>
+                  {project.link && (
+                    <View style={styles.projectLink}>
+                      <Text>Site web:</Text>
+                      <Text>{project.link}</Text>
+                    </View>
+                  )}
                 </View>
-                <Text style={styles.expOrg}>{exp.org}</Text>
-                {exp.bullets.map((bullet, j) => (
+              ))}
+            </View>
+          </View>
+
+          <View style={styles.content}>
+            <View>
+              <Text style={styles.sectionTitle}>Expériences (suite)</Text>
+              {DATA.experiences.slice(3, 4).map((exp, i) => (
+                <View key={i} style={styles.experienceItem}>
+                  <View style={styles.expHeader}>
+                    <Text style={styles.expTitle}>{exp.title}</Text>
+                    <Text style={styles.expDate}>{exp.date}</Text>
+                  </View>
+                  <Text style={styles.expOrg}>{exp.org}</Text>
+                  {exp.bullets.map((bullet, j) => (
+                    <View key={j} style={styles.expBullet}>
+                      <View style={styles.bulletPoint} />
+                      <Text style={styles.expBulletText}>{bullet}</Text>
+                    </View>
+                  ))}
+                  <View style={styles.tagContainer}>
+                    {exp.tags.map((tag, j) => (
+                      <Text key={j} style={styles.tag}>{tag}</Text>
+                    ))}
+                  </View>
+                </View>
+              ))}
+            </View>
+
+            <View>
+              <Text style={styles.sectionTitle}>Engagements</Text>
+              <View style={styles.experienceItem}>
+                <View style={styles.expHeader}>
+                  <Text style={styles.expTitle}>{DATA.assoc.title}</Text>
+                  <Text style={styles.expDate}>{DATA.assoc.date}</Text>
+                </View>
+                <Text style={styles.expOrg}>{DATA.assoc.org}</Text>
+                {DATA.assoc.bullets.map((bullet, j) => (
                   <View key={j} style={styles.expBullet}>
                     <View style={styles.bulletPoint} />
                     <Text style={styles.expBulletText}>{bullet}</Text>
                   </View>
                 ))}
-                <View style={styles.tagContainer}>
-                  {exp.tags.map((tag, j) => (
-                    <Text key={j} style={styles.tag}>{tag}</Text>
-                  ))}
-                </View>
               </View>
-            ))}
-          </View>
-
-          <View>
-            <Text style={styles.sectionTitle}>Engagements Associatifs</Text>
-            <View style={styles.experienceItem}>
-              <View style={styles.expHeader}>
-                <Text style={styles.expTitle}>{DATA.assoc.title}</Text>
-                <Text style={styles.expDate}>{DATA.assoc.date}</Text>
-              </View>
-              <Text style={styles.expOrg}>{DATA.assoc.org}</Text>
-              {DATA.assoc.bullets.map((bullet, j) => (
-                <View key={j} style={styles.expBullet}>
-                  <View style={styles.bulletPoint} />
-                  <Text style={styles.expBulletText}>{bullet}</Text>
-                </View>
-              ))}
             </View>
           </View>
         </View>
       </View>
 
-      {/* Signature en bas de page */}
-      <View style={styles.signatureContainer}>
-        <View style={styles.signatureItem}>
-          <Text style={styles.signatureDate}>Fait à Ouagadougou, le ___/___/2026</Text>
-          <View style={styles.signatureLine}>
-            <Text style={styles.signatureLabel}>Signature</Text>
+      {/* Signature sans texte "Signature" */}
+      <View style={styles.signatureWrapper}>
+        <View style={styles.signatureContainer}>
+          <View style={styles.signatureItem}>
+            <Text style={styles.signatureDate}>Fait à Ouagadougou, le ___/___/2026</Text>
+            <View style={styles.signatureLine} />
           </View>
-        </View>
-        <View style={styles.signatureItem}>
-          <Text style={styles.signatureName}>{DATA.name}</Text>
-          <View style={styles.signatureLine}>
-            <Text style={styles.signatureLabel}>Signature</Text>
+          <View style={styles.signatureItem}>
+            <Text style={styles.signatureName}>{DATA.name}</Text>
+            <View style={styles.signatureLine} />
           </View>
         </View>
       </View>
@@ -642,23 +644,21 @@ export default function CVPage() {
   return (
     <section id="cv" className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 py-12">
       <div className="max-w-6xl mx-auto px-6">
-        {/* Barre d'actions */}
         <div className="flex items-center justify-between gap-3 mb-8">
           <button 
             onClick={goBack} 
-            className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-white border border-slate-200 shadow-md text-sm font-medium text-slate-700 hover:text-indigo-600 hover:shadow-lg transition-all"
+            className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-white border border-slate-200 shadow-md text-sm font-medium text-slate-700 hover:text-indigo-600 transition-all"
           >
-            <ArrowLeft size={18} /> Retour au portfolio
+            <ArrowLeft size={18} /> Retour
           </button>
           <button 
             onClick={handleDownload} 
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-indigo-600 to-indigo-700 text-white text-sm font-semibold shadow-lg hover:shadow-xl hover:from-indigo-700 hover:to-indigo-800 transition-all"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-indigo-600 to-indigo-700 text-white text-sm font-semibold shadow-lg hover:shadow-xl transition-all"
           >
-            <Download size={18} /> Télécharger le CV (PDF)
+            <Download size={18} /> Télécharger PDF
           </button>
         </div>
 
-        {/* Aperçu PDF */}
         <div className="bg-white rounded-2xl shadow-2xl overflow-hidden border border-slate-200">
           <div className="h-[85vh]">
             <PDFViewer width="100%" height="100%">
