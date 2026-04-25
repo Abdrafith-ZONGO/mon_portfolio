@@ -124,31 +124,108 @@ export const t = {
       cvLink:    'Télécharger CV',
     },
 
-    // ── CV PAGE ───────────────────────────────────────────────────────────────
-    cv: {
-      pageTitle:    'Mon CV',
-      backBtn:      '← Retour',
-      printBtn:     '🖨 Imprimer',
-      downloadBtn:  '⬇ Télécharger PDF',
-      bannerTitle:  'CV complet — Abdrafith ZONGO',
-      bannerDesc:   'Téléchargez le PDF, imprimez-le, remplissez la date et signez.',
-      jobTitle:     'Développeur Informatique spécialisé en Data & Statistiques',
-      eduLine:      'Master de Sciences de Données (IFOAD, UJKZ) • Licence Statistiques et Informatique',
-      tagline1:     "Passionné par l'analyse de données et les technologies numériques, j'allie compétences en développement informatique et expertise statistique.",
-      tagline2:     "Rigueur, persévérance et esprit d'équipe sont les atouts que je souhaite mettre au service d'un environnement dynamique.",
-      sectionEdu:   'Diplômes et Formations Académiques',
-      sectionExp:   'Expériences Professionnelles',
-      sectionData:  'Compétences en Data & Analyse',
-      sectionAssoc: 'Expériences Associatives',
-      sectionLangs: 'Langues',
-      sectionSkills:'Compétences',
-      sectionHobbies:'Intérêts',
-      contact:      'Contact',
-      dateLabel:    'Fait à Ouagadougou, le ......\u00a0/\u00a0......\u00a0/\u00a0......',
-      signLabel:    'Signature',
-      signName:     'Abdrafith ZONGO',
-      signSub:      'Signature manuscrite',
-      downloadNote: 'Imprimez, remplissez la date et signez à la main.',
+        // ── DONNÉES CV ───────────────────────────────────────────────────────────────
+    cvData: {
+      jobTitle: 'Développeur Full Stack & Data Analyst',
+      profileText: 'Développeur Full Stack et Data Analyst passionné, avec une double compétence en développement web et analyse de données. Expert en solutions ERP (Odoo) et gestion électronique de documents (Maarch). Rigoureux, adaptable et toujours à l\'affût des nouvelles technologies.',
+      
+      langs: [
+        { name: 'Français', level: 'C1 (Avancé)' },
+        { name: 'Anglais', level: 'B1 (Intermédiaire)' },
+      ],
+      
+      chips: [
+        'Langages : Python, Java, TypeScript, R, SQL',
+        'Frontend : React, Angular, Tailwind CSS, Flutter, Figma',
+        'Backend/BDD : Spring Boot, Prisma, Supabase, PostgreSQL',
+        'Data/IA : Machine Learning, Power BI, Stata, ArcGIS Pro',
+        'DevOps/Outils : Docker, Kubernetes, Git, Grafana',
+        'ERP/GED : Odoo, Maarch',
+      ],
+      
+      formations: [
+        { date: 'Depuis octobre 2025', title: 'Master en Sciences des Données', org: 'Université Joseph KI-ZERBO', details: 'Principaux axes : Analyse de données, Modélisation statistique, Développement logiciel, Intelligence Artificielle.' },
+        { date: 'Octobre 2022 - Juillet 2025', title: 'Licence en Statistiques et Informatique', org: 'Université Nazi BONI de Bobo-Dioulasso', details: 'Principaux axes : Modélisation et analyse statistique, Bases de données, Réseaux, Programmation avancée' },
+        { date: '2020 – 2022', title: 'Baccalauréat série D', org: 'Lycée Provincial de Boromo', details: 'Principaux axes : Sciences de la Vie et de la Terre.' },
+        { date: '2018 – 2020', title: 'Brevet d’Études du Premier Cycle (BEPC)', org: 'Lycée Privé Évangélique de Boromo' },
+        { date: '2014 – 2018', title: 'Certificat d’Études Primaires (CEP)', org: 'École Primaire de Boromo' },
+      ],
+      
+      experiences: [
+        {
+          date: 'Depuis novembre 2025',
+          title: 'Développeur Full Stack',
+          org: 'Telia Informatique',
+          bullets: [
+            'Déploiement et pilotage de Maarch (GED/SAE) pour LONAB et CNSS',
+            'Conception de logiciels de gestion (budgétaire, comptable, stock) pour SONAGESS, CHU Yalgado, DGAIE, UEMOA, ...',
+            'Développement d\'un site e-recrutement pour l\'UEMOA',
+            'Stack technique : Python, Java, Spring Boot, Angular, Figma, Odoo, Docker, Kubernetes – Méthode Scrum',
+          ],
+          tags: ['Maarch', 'Odoo', 'Python', 'JavaScript', 'Spring Boot', 'Angular', 'Docker', 'Scrum'],
+        },
+        {
+          date: 'Juin – Juillet 2025',
+          title: 'Chargé Suivi & Évaluation',
+          org: 'SBUM - Bobo-Dioulasso',
+          bullets: [
+            'Conception et administration de questionnaires avec KoboToolbox',
+            'Collecte et analyse des données de participation sous Excel et R',
+            'Automatisation des rapports et reporting stratégique',
+          ],
+          tags: ['KoboToolbox', 'Excel', 'R', 'Reporting', 'Analyse de données'],
+        },
+        {
+          date: 'Mars – Juin 2025',
+          title: 'Stage en Statistiques pour l\'obtention de la Licence',
+          org: 'INSD - Ouagadougou',
+          bullets: [
+            'Thème : Analyse des disparités liées au genre dans l’inclusion sociale sur le marché de l’emploi au Burkina Faso.',
+            'Traitement et analyse de données massives (Stata, R, Python) et automatisation des rapports Power BI',
+            'Analyse spatiale et cartographie avec ArcGIS Pro',
+          ],
+          tags: ['Power BI', 'Stata', 'R', 'Python', 'ArcGIS Pro', 'Statistiques'],
+        },
+        {
+          date: 'Juillet – Septembre 2023',
+          title: 'Stage en Maintenance et Support IT',
+          org: 'CBIT - Comptoir Burkinabè de l\'Informatique et de la Technologie',
+          bullets: [
+            'Diagnostic matériel / logiciel et résolution de pannes',
+            'Installation et configuration de systèmes (Windows, Linux)',
+            'Assistance utilisateurs, maintenance préventive et gestion du parc informatique',
+          ],
+          tags: ['Hardware', 'OS', 'Windows', 'Linux', 'Support IT'],
+        },
+      ],
+      
+      projects: [
+        { name: 'Gestion École (Odoo)', description: 'ERP complet : inscriptions, notes, paiements', stack: 'Odoo, Python, PostgreSQL', link: null },
+        { name: 'Laiterie NASOO', description: 'E-commerce produits laitiers locaux', stack: 'React, Prisma, Supabase', link: 'laiterienasoo.com' },
+        { name: 'Parapharmacie Dalwo', description: 'Catalogue digital et vitrine', stack: 'React, Tailwind', link: 'parapharmaciedalwo.com' },
+        { name: 'Portfolio Personnel', description: 'Mon portfolio professionnel', stack: 'React, TypeScript, Tailwind', link: 'abdrafithzongo.com' },
+      ],
+      
+      dataSkills: [
+        'Statistiques descriptives et inférentielles',
+        'Modélisation (régressions, tests)',
+        'Tableaux de bord Power BI',
+        'Rigueur analytique et adaptabilité',
+      ],
+      
+      signatureCert: 'Je certifie sur l\'honneur l\'exactitude des informations ci-dessus',
+      
+      // Sections titles
+      sectionTitles: {
+        profil: 'Profil',
+        langues: 'Langues',
+        competences: 'Compétences',
+        dataAnalytics: 'Data & Analytics',
+        formations: 'Formations',
+        experiences: 'Expériences professionnelles',
+        experiencesSuite: 'Expériences professionnelles (suite)',
+        projets: 'Projets Personnels',
+      },
     },
   },
 
@@ -262,30 +339,108 @@ export const t = {
       location:  'in Ouagadougou',
       cvLink:    'Download CV',
     },
-    cv: {
-      pageTitle:    'My CV',
-      backBtn:      '← Back',
-      printBtn:     '🖨 Print',
-      downloadBtn:  '⬇ Download PDF',
-      bannerTitle:  'Full CV — Abdrafith ZONGO',
-      bannerDesc:   'Download the PDF, print it, fill in the date and sign.',
-      jobTitle:     'Software Developer specialised in Data & Statistics',
-      eduLine:      'Master of Data Science (IFOAD, UJKZ) • Bachelor in Statistics & Computer Science',
-      tagline1:     'Passionate about data analysis and digital technologies, I combine software development skills with statistical expertise.',
-      tagline2:     'Rigour, perseverance and team spirit are the assets I wish to bring to a dynamic environment.',
-      sectionEdu:   'Academic Degrees & Training',
-      sectionExp:   'Professional Experience',
-      sectionData:  'Data & Analytics Skills',
-      sectionAssoc: 'Association Experience',
-      sectionLangs: 'Languages',
-      sectionSkills:'Skills',
-      sectionHobbies:'Interests',
-      contact:      'Contact',
-      dateLabel:    'Done in Ouagadougou, on\u00a0......\u00a0/\u00a0......\u00a0/\u00a0......',
-      signLabel:    'Signature',
-      signName:     'Abdrafith ZONGO',
-      signSub:      'Handwritten signature',
-      downloadNote: 'Print, fill in the date and sign by hand.',
+    // ── CV DATA ───────────────────────────────────────────────────────────────
+    cvData: {
+      jobTitle: 'Full Stack Developer & Data Analyst',
+      profileText: 'Passionate Full Stack Developer and Data Analyst with dual expertise in web development and data analysis. Expert in ERP solutions (Odoo) and electronic document management (Maarch). Rigorous, adaptable, and always eager to explore new technologies.',
+      
+      langs: [
+        { name: 'French', level: 'C1 (Advanced)' },
+        { name: 'English', level: 'B1 (Intermediate)' },
+      ],
+      
+      chips: [
+        'Languages : Python, Java, TypeScript, R, SQL',
+        'Frontend : React, Angular, Tailwind CSS, Flutter, Figma',
+        'Backend/DB : Spring Boot, Prisma, Supabase, PostgreSQL',
+        'Data/AI : Machine Learning, Power BI, Stata, ArcGIS Pro',
+        'DevOps/Tools : Docker, Kubernetes, Git, Grafana',
+        'ERP/GED : Odoo, Maarch',
+      ],
+      
+      formations: [
+        { date: 'Since October 2025', title: 'Master in Data Science', org: 'Joseph KI-ZERBO University', details: 'Main areas : Data Analysis, Statistical Modeling, Software Development, Artificial Intelligence.' },
+        { date: 'October 2022 - July 2025', title: 'Bachelor in Statistics and Computer Science', org: 'Nazi BONI University of Bobo-Dioulasso', details: 'Main areas : Statistical Modeling & Analysis, Databases, Networks, Advanced Programming' },
+        { date: '2020 – 2022', title: 'High School Diploma (Series D)', org: 'Boromo Provincial High School', details: 'Main areas : Life and Earth Sciences' },
+        { date: '2018 – 2020', title: 'Secondary School Certificate (BEPC)', org: 'Boromo Evangelical Private High School' },
+        { date: '2014 – 2018', title: 'Primary School Certificate (CEP)', org: 'Boromo Primary School' },
+      ],
+      
+      experiences: [
+        {
+          date: 'Since November 2025',
+          title: 'Full Stack Developer',
+          org: 'Telia Informatique',
+          bullets: [
+            'Deployment and management of Maarch (GED/SAE) for LONAB and CNSS',
+            'Design of management software (budget, accounting, inventory) for SONAGESS, CHU Yalgado, DGAIE, UEMOA, ...',
+            'Development of an e-recruitment site for UEMOA',
+            'Tech stack : Python, Java, Spring Boot, Angular, Figma, Odoo, Docker, Kubernetes – Scrum methodology',
+          ],
+          tags: ['Maarch', 'Odoo', 'Python', 'JavaScript', 'Spring Boot', 'Angular', 'Docker', 'Scrum'],
+        },
+        {
+          date: 'June – July 2025',
+          title: 'Monitoring & Evaluation Officer',
+          org: 'SBUM - Bobo-Dioulasso',
+          bullets: [
+            'Design and administration of questionnaires with KoboToolbox',
+            'Data collection and analysis using Excel and R',
+            'Report automation and strategic reporting',
+          ],
+          tags: ['KoboToolbox', 'Excel', 'R', 'Reporting', 'Data Analysis'],
+        },
+        {
+          date: 'March – June 2025',
+          title: 'Statistics Internship (Bachelor\'s Degree)',
+          org: 'INSD - Ouagadougou',
+          bullets: [
+            'Theme : Analysis of gender disparities in social inclusion in the job market in Burkina Faso.',
+            'Massive data processing and analysis (Stata, R, Python) and Power BI report automation',
+            'Spatial analysis and cartography with ArcGIS Pro',
+          ],
+          tags: ['Power BI', 'Stata', 'R', 'Python', 'ArcGIS Pro', 'Statistics'],
+        },
+        {
+          date: 'July – September 2023',
+          title: 'IT Maintenance & Support Internship',
+          org: 'CBIT - Burkinabe IT and Technology Center',
+          bullets: [
+            'Hardware/software diagnostics and troubleshooting',
+            'System installation and configuration (Windows, Linux)',
+            'User support, preventive maintenance, and IT asset management',
+          ],
+          tags: ['Hardware', 'OS', 'Windows', 'Linux', 'IT Support'],
+        },
+      ],
+      
+      projects: [
+        { name: 'School Management (Odoo)', description: 'Complete ERP : registrations, grades, payments', stack: 'Odoo, Python, PostgreSQL', link: null },
+        { name: 'NASOO Dairy', description: 'E-commerce for local dairy products', stack: 'React, Prisma, Supabase', link: 'laiterienasoo.com' },
+        { name: 'Dalwo Pharmacy', description: 'Digital catalog and showcase', stack: 'React, Tailwind', link: 'parapharmaciedalwo.com' },
+        { name: 'Personal Portfolio', description: 'My professional portfolio', stack: 'React, TypeScript, Tailwind', link: 'abdrafithzongo.com' },
+      ],
+      
+      dataSkills: [
+        'Descriptive and inferential statistics',
+        'Modeling (regressions, tests)',
+        'Power BI dashboards',
+        'Analytical rigor and adaptability',
+      ],
+      
+      signatureCert: 'I certify on my honor that the information above is accurate',
+      
+      // Sections titles
+      sectionTitles: {
+        profil: 'Profile',
+        langues: 'Languages',
+        competences: 'Skills',
+        dataAnalytics: 'Data & Analytics',
+        formations: 'Education',
+        experiences: 'Professional Experience',
+        experiencesSuite: 'Professional Experience (continued)',
+        projets: 'Personal Projects',
+      },
     },
   },
 }

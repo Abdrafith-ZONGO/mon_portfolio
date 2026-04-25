@@ -6,11 +6,12 @@ import {
   Languages, Heart, Github, Linkedin, Globe 
 } from 'lucide-react';
 import { PDFViewer, pdf, Document, Page, Text, View, StyleSheet, Image, Font } from '@react-pdf/renderer';
+import { useLang } from '../../i18n/LangContext';
 
 // ═════════════════════════════════════════════════════════════════════════════
-// DONNÉES CV COMPLÈTES
+// DONNÉES COMMUNES (non traduites - identiques en FR et EN)
 // ═════════════════════════════════════════════════════════════════════════════
-const DATA = {
+const COMMON = {
   name: 'Abdrafith ZONGO',
   email: 'zongo1abdrafith@gmail.com',
   phone: '+226 07 71 32 17',
@@ -22,147 +23,10 @@ const DATA = {
   portfolio: 'https://abdrafithzongo.com',
   portfolioName: 'abdrafithzongo.com',
   photo: '/src/assets/photoProfil.jpeg',
-
-langs: [
-    { name: 'Français', level: 'C1 (Avancé)' },
-    // { name: 'Morée', level: 'C1 (Paternelle)' },
-    // { name: 'Dioula', level: 'C1 (Maternelle)' },
-    { name: 'Anglais', level: 'B1 (Intermédiaire)' },
-  ],
-chips: [
-    'Langages : Python, Java, TypeScript, R, SQL',
-    'Frontend : React, Angular, Tailwind CSS, Flutter, Figma',
-    'Backend/BDD : Spring Boot, Prisma, Supabase, PostgreSQL',
-    'Data/IA : Machine Learning, Power BI, Stata, ArcGIS Pro',
-    'DevOps/Outils : Docker, Kubernetes, Git, Grafana',
-    'ERP/GED : Odoo, Maarch',
-  ],
-
-formations: [
-    { 
-      date: 'Depuis octobre 2025', 
-      title: 'Master en Sciences des Données', 
-      org: 'Université Joseph KI-ZERBO',
-      details: 'Principaux axes : Analyse de données, Modélisation statistique, Développement logiciel, Intelligence Artificielle.'
-    },
-  { 
-    date: 'Octobre 2022 - Juillet 2025', 
-    title: 'Licence en Statistiques et Informatique', 
-    org: 'Université Nazi BONI de Bobo-Dioulasso',
-    details: 'Principaux axes : Modélisation et analyse statistique, Bases de données, Réseaux, Programmation avancée'
-  },
-    { 
-      date: '2020 – 2022', 
-      title: 'Baccalauréat série D', 
-      org: 'Lycée Provincial de Boromo',
-      details: 'Principaux axes : Sciences de la Vie et de la Terre.'
-    },
-    { 
-      date: '2018 – 2020', 
-      title: 'Brevet d’Études du Premier Cycle (BEPC)', 
-      org: 'Lycée Privé Évangélique de Boromo' 
-    },
-    { 
-      date: '2014 – 2018', 
-      title: 'Certificat d’Études Primaires (CEP)', 
-      org: 'École Primaire de Boromo' 
-    },
-  ],
-
-  experiences: [
-    {
-      date: 'Depuis novembre 2025',
-      title: 'Développeur Full Stack',
-      org: 'Telia Informatique',
-      bullets: [
-        'Déploiement et pilotage de Maarch (GED/SAE) pour LONAB et CNSS',
-        'Conception de logiciels de gestion (budgétaire, comptable, stock) pour SONAGESS, CHU Yalgado, DGAIE, UEMOA, ... ',
-        'Développement d\'un site e-recrutement pour l\'UEMOA',
-        'Stack technique : Python, Java, Spring Boot, Angular, Figma, Odoo, Docker, Kubernetes – Méthode Scrum',
-      ],
-      tags: ['Maarch', 'Odoo', 'Python', 'JavaScript', 'Spring Boot', 'Angular', 'Docker', 'Scrum'],
-    },
-  {
-    date: 'Juin – Juillet 2025',
-    title: 'Chargé Suivi & Évaluation',
-    org: 'SBUM - Bobo-Dioulasso',
-    bullets: [
-      'Conception et administration de questionnaires avec KoboToolbox',
-      'Collecte et analyse des données de participation sous Excel et R',
-      'Automatisation des rapports et reporting stratégique',
-    ],
-    tags: ['KoboToolbox', 'Excel', 'R', 'Reporting', 'Analyse de données'],
-  },
-    {
-      date: 'Mars – Juin 2025',
-      title: 'Stage en Statistiques pour l\'obtention de la Licence',
-      org: 'INSD - Ouagadougou',
-      bullets: [
-        'Thème : Analyse des disparités liées au genre dans l’inclusion sociale sur le marché de l’emploi au Burkina Faso.',
-        'Traitement et analyse de données massives (Stata, R, Python) et automatisation des rapports Power BI',
-        'Analyse spatiale et cartographie avec ArcGIS Pro',
-      ],
-      tags: ['Power BI', 'Stata', 'R', 'Python', 'ArcGIS Pro', 'Statistiques'],
-    },
-    {
-      date: 'Juillet – Septembre 2023',
-      title: 'Stage en Maintenance et Support IT',
-      org: 'CBIT - Comptoir Burkinabè de l\'Informatique et de la Technologie',
-      bullets: [
-        'Diagnostic matériel / logiciel et résolution de pannes',
-        'Installation et configuration de systèmes (Windows, Linux)',
-        'Assistance utilisateurs, maintenance préventive et gestion du parc informatique',
-      ],
-      tags: ['Hardware', 'OS', 'Windows', 'Linux', 'Support IT'],
-    },
-  ],
-  projects: [
-    {
-      name: 'Gestion École (Odoo)',
-      description: 'ERP complet : inscriptions, notes, paiements',
-      stack: 'Odoo, Python, PostgreSQL',
-      link: null,
-    },
-    {
-      name: 'Laiterie NASOO',
-      description: 'E-commerce produits laitiers locaux',
-      stack: 'React, Prisma, Supabase',
-      link: 'laiterienasoo.com',
-    },
-    {
-      name: 'Parapharmacie Dalwo',
-      description: 'Catalogue digital et vitrine',
-      stack: 'React, Tailwind',
-      link: 'parapharmaciedalwo.com',
-    },
-    {
-      name: 'Portfolio Personnel',
-      description: 'Mon portfolio professionnel',
-      stack: 'React, TypeScript, Tailwind',
-      link: 'abdrafithzongo.com',
-    },
-  ],
-
-  dataSkills: [
-    'Statistiques descriptives et inférentielles',
-    'Modélisation (régressions, tests)',
-    'Tableaux de bord Power BI',
-    'Rigueur analytique et adaptabilité',
-  ],
-
-  // assoc: {
-  //   date: '2022 – Août 2025',
-  //   title: 'Délégué activités sportives',
-  //   org: 'CESI — UNB',
-  //   bullets: [
-  //     'Organisation d\'événements sportifs inter-facultés',
-  //     'Coordination des équipes',
-  //   ],
-  // },
 };
 
 // ═════════════════════════════════════════════════════════════════════════════
-// STYLES PDF - OPTIMISÉ POUR 2 PAGES
+// STYLES PDF - OPTIMISÉ POUR 2 PAGES (inchangés)
 // ═════════════════════════════════════════════════════════════════════════════
 const styles = StyleSheet.create({
   page: {
@@ -330,12 +194,12 @@ const styles = StyleSheet.create({
     fontStyle: 'italic',
   },
   details: {
-  fontSize: 7,            
-  color: '#475569',      
-  marginTop: 2,           
-  fontStyle: 'italic',    
-  lineHeight: 1.3,        
-},
+    fontSize: 7,            
+    color: '#475569',      
+    marginTop: 2,           
+    fontStyle: 'italic',    
+    lineHeight: 1.3,        
+  },
   expBullet: {
     flexDirection: 'row',
     marginBottom: 2,
@@ -462,41 +326,41 @@ const styles = StyleSheet.create({
 // ═════════════════════════════════════════════════════════════════════════════
 // COMPOSANT PDF
 // ═════════════════════════════════════════════════════════════════════════════
-const CVPDFDocument = () => (
+const CVPDFDocument = ({ data, common }: { data: any, common: typeof COMMON }) => (
   <Document>
     {/* PAGE 1 - Formations + 3 premières expériences */}
     <Page size="A4" style={styles.page}>
       <View style={styles.header}>
-        <Image src={DATA.photo} style={styles.photo} />
+        <Image src={common.photo} style={styles.photo} />
         <View style={styles.headerText}>
-          <Text style={styles.name}>{DATA.name}</Text>
-          <Text style={styles.title}>Développeur Full Stack & Data Analyst</Text>
+          <Text style={styles.name}>{common.name}</Text>
+          <Text style={styles.title}>{data.jobTitle}</Text>
           <View style={styles.contactInfo}>
             <View style={styles.contactItem}>
               <Text style={styles.contactLabel}>Email:</Text>
-              <Text style={styles.contactText}>{DATA.email}</Text>
+              <Text style={styles.contactText}>{common.email}</Text>
             </View>
             <View style={styles.contactItem}>
               <Text style={styles.contactLabel}>Tel:</Text>
-              <Text style={styles.contactText}>{DATA.phone}</Text>
+              <Text style={styles.contactText}>{common.phone}</Text>
             </View>
             <View style={styles.contactItem}>
               <Text style={styles.contactLabel}>Adresse:</Text>
-              <Text style={styles.contactText}>{DATA.location}</Text>
+              <Text style={styles.contactText}>{common.location}</Text>
             </View>
           </View>
           <View style={styles.socialLinks}>
             <View style={styles.socialItem}>
               <Text style={styles.socialLabel}>GitHub:</Text>
-              <Text style={styles.socialText}>{DATA.githubUsername}</Text>
+              <Text style={styles.socialText}>{common.githubUsername}</Text>
             </View>
             <View style={styles.socialItem}>
               <Text style={styles.socialLabel}>LinkedIn:</Text>
-              <Text style={styles.socialText}>{DATA.linkedinUsername}</Text>
+              <Text style={styles.socialText}>{common.linkedinUsername}</Text>
             </View>
             <View style={styles.socialItem}>
               <Text style={styles.socialLabel}>Portfolio:</Text>
-              <Text style={styles.socialText}>{DATA.portfolioName}</Text>
+              <Text style={styles.socialText}>{common.portfolioName}</Text>
             </View>
           </View>
         </View>
@@ -505,18 +369,13 @@ const CVPDFDocument = () => (
       <View style={styles.container}>
         <View style={styles.sidebar}>
           <View>
-            <Text style={styles.sectionTitle}>Profil</Text>
-            <Text style={styles.profileText}>
-              Développeur Full Stack et Data Analyst passionné, avec une double compétence en 
-              développement web et analyse de données. Expert en solutions ERP (Odoo) et 
-              gestion électronique de documents (Maarch). Rigoureux, adaptable et toujours 
-              à l'affût des nouvelles technologies.
-            </Text>
+            <Text style={styles.sectionTitle}>{data.sectionTitles.profil}</Text>
+            <Text style={styles.profileText}>{data.profileText}</Text>
           </View>
 
           <View>
-            <Text style={styles.sectionTitle}>Langues</Text>
-            {DATA.langs.map((lang, i) => (
+            <Text style={styles.sectionTitle}>{data.sectionTitles.langues}</Text>
+            {data.langs.map((lang: any, i: number) => (
               <View key={i} style={styles.langItem}>
                 <Text style={styles.langName}>{lang.name}</Text>
                 <Text style={styles.langLevel}>{lang.level}</Text>
@@ -525,17 +384,17 @@ const CVPDFDocument = () => (
           </View>
 
           <View>
-            <Text style={styles.sectionTitle}>Compétences</Text>
+            <Text style={styles.sectionTitle}>{data.sectionTitles.competences}</Text>
             <View style={styles.skillContainer}>
-              {DATA.chips.map((skill, i) => (
+              {data.chips.map((skill: string, i: number) => (
                 <Text key={i} style={styles.skillBadge}>{skill}</Text>
               ))}
             </View>
           </View>
 
           <View>
-            <Text style={styles.sectionTitle}>Data & Analytics</Text>
-            {DATA.dataSkills.map((skill, i) => (
+            <Text style={styles.sectionTitle}>{data.sectionTitles.dataAnalytics}</Text>
+            {data.dataSkills.map((skill: string, i: number) => (
               <View key={i} style={styles.dataSkillItem}>
                 <View style={styles.dataSkillBullet} />
                 <Text style={styles.dataSkillText}>{skill}</Text>
@@ -546,8 +405,8 @@ const CVPDFDocument = () => (
 
         <View style={styles.content}>
           <View>
-            <Text style={styles.sectionTitle}>Formations</Text>
-            {DATA.formations.map((formation, i) => (
+            <Text style={styles.sectionTitle}>{data.sectionTitles.formations}</Text>
+            {data.formations.map((formation: any, i: number) => (
               <View key={i} style={styles.experienceItem}>
                 <View style={styles.expHeader}>
                   <Text style={styles.expTitle}>{formation.title}</Text>
@@ -555,29 +414,29 @@ const CVPDFDocument = () => (
                 </View>
                 <Text style={styles.expOrg}>{formation.org}</Text>
                 {formation.details && (
-              <Text style={styles.details}>{formation.details}</Text>
-    )}
+                  <Text style={styles.details}>{formation.details}</Text>
+                )}
               </View>
             ))}
           </View>
 
           <View>
-            <Text style={styles.sectionTitle}>Expériences professionnelles</Text>
-            {DATA.experiences.slice(0, 3).map((exp, i) => (
+            <Text style={styles.sectionTitle}>{data.sectionTitles.experiences}</Text>
+            {data.experiences.slice(0, 3).map((exp: any, i: number) => (
               <View key={i} style={styles.experienceItem}>
                 <View style={styles.expHeader}>
                   <Text style={styles.expTitle}>{exp.title}</Text>
                   <Text style={styles.expDate}>{exp.date}</Text>
                 </View>
                 <Text style={styles.expOrg}>{exp.org}</Text>
-                {exp.bullets.map((bullet, j) => (
+                {exp.bullets.map((bullet: string, j: number) => (
                   <View key={j} style={styles.expBullet}>
                     <View style={styles.bulletPoint} />
                     <Text style={styles.expBulletText}>{bullet}</Text>
                   </View>
                 ))}
                 <View style={styles.tagContainer}>
-                  {exp.tags.map((tag, j) => (
+                  {exp.tags.map((tag: string, j: number) => (
                     <Text key={j} style={styles.tag}>{tag}</Text>
                   ))}
                 </View>
@@ -588,13 +447,13 @@ const CVPDFDocument = () => (
       </View>
     </Page>
 
-    {/* PAGE 2 - Dernière expérience + Projets + Engagements + Signature */}
+    {/* PAGE 2 - Dernière expérience + Projets + Signature */}
     <Page size="A4" style={styles.page}>
       <View style={styles.container}>
         <View style={styles.sidebar}>
           <View>
-            <Text style={styles.sectionTitle}>Projets Personnels</Text>
-            {DATA.projects.map((project, i) => (
+            <Text style={styles.sectionTitle}>{data.sectionTitles.projets}</Text>
+            {data.projects.map((project: any, i: number) => (
               <View key={i} style={styles.projectItem}>
                 <Text style={styles.projectName}>{project.name}</Text>
                 <Text style={styles.projectDesc}>{project.description}</Text>
@@ -612,66 +471,49 @@ const CVPDFDocument = () => (
 
         <View style={styles.content}>
           <View>
-            <Text style={styles.sectionTitle}>Expériences professionnelles (suite)</Text>
-            {DATA.experiences.slice(3, 4).map((exp, i) => (
+            <Text style={styles.sectionTitle}>{data.sectionTitles.experiencesSuite}</Text>
+            {data.experiences.slice(3, 4).map((exp: any, i: number) => (
               <View key={i} style={styles.experienceItem}>
                 <View style={styles.expHeader}>
                   <Text style={styles.expTitle}>{exp.title}</Text>
                   <Text style={styles.expDate}>{exp.date}</Text>
                 </View>
                 <Text style={styles.expOrg}>{exp.org}</Text>
-                {exp.bullets.map((bullet, j) => (
+                {exp.bullets.map((bullet: string, j: number) => (
                   <View key={j} style={styles.expBullet}>
                     <View style={styles.bulletPoint} />
                     <Text style={styles.expBulletText}>{bullet}</Text>
                   </View>
                 ))}
                 <View style={styles.tagContainer}>
-                  {exp.tags.map((tag, j) => (
+                  {exp.tags.map((tag: string, j: number) => (
                     <Text key={j} style={styles.tag}>{tag}</Text>
                   ))}
                 </View>
               </View>
             ))}
           </View>
-
-          {/* <View>
-            <Text style={styles.sectionTitle}>Engagements</Text>
-            <View style={styles.experienceItem}>
-              <View style={styles.expHeader}>
-                <Text style={styles.expTitle}>{DATA.assoc.title}</Text>
-                <Text style={styles.expDate}>{DATA.assoc.date}</Text>
-              </View>
-              <Text style={styles.expOrg}>{DATA.assoc.org}</Text>
-              {DATA.assoc.bullets.map((bullet, j) => (
-                <View key={j} style={styles.expBullet}>
-                  <View style={styles.bulletPoint} />
-                  <Text style={styles.expBulletText}>{bullet}</Text>
-                </View>
-              ))}
-            </View>
-          </View> */}
         </View>
       </View>
 
-    {/* Signature et mention */}
-    <View style={styles.signatureWrapper}>
-      <View style={styles.signatureContainer}>
-        <View style={styles.signatureItem}>
-          <Text style={styles.signatureDate}>Fait à Ouagadougou, le ___/___/2026</Text>
-          <View style={styles.signatureLine} />
+      {/* Signature et mention */}
+      <View style={styles.signatureWrapper}>
+        <View style={styles.signatureContainer}>
+          <View style={styles.signatureItem}>
+            <Text style={styles.signatureDate}>Fait à Ouagadougou, le ___/___/2026</Text>
+            <View style={styles.signatureLine} />
+          </View>
+          <View style={styles.signatureItem}>
+            <Text style={styles.signatureName}>{common.name}</Text>
+            <View style={styles.signatureLine} />
+          </View>
         </View>
-        <View style={styles.signatureItem}>
-          <Text style={styles.signatureName}>{DATA.name}</Text>
-          <View style={styles.signatureLine} />
+        <View style={{ marginTop: 10, alignItems: 'center' }}>
+          <Text style={{ fontSize: 6, color: '#475569', textAlign: 'center' }}>
+            {data.signatureCert}
+          </Text>
         </View>
       </View>
-      <View style={{ marginTop: 10, alignItems: 'center' }}>
-        <Text style={{ fontSize: 6, color: '#475569', textAlign: 'center' }}>
-          Je certifie sur l'honneur l'exactitude des informations ci-dessus
-        </Text>
-      </View>
-    </View>
     </Page>
   </Document>
 );
@@ -680,8 +522,11 @@ const CVPDFDocument = () => (
 // COMPOSANT PRINCIPAL
 // ═════════════════════════════════════════════════════════════════════════════
 export default function CVPage() {
+  const { tr } = useLang();
+  const data = tr.cvData;
+
   const handleDownload = async () => {
-    const blob = await pdf(<CVPDFDocument />).toBlob();
+    const blob = await pdf(<CVPDFDocument data={data} common={COMMON} />).toBlob();
     const url = URL.createObjectURL(blob);
     const link = document.createElement('a');
     link.href = url;
@@ -715,7 +560,7 @@ export default function CVPage() {
         <div className="bg-white rounded-2xl shadow-2xl overflow-hidden border border-slate-200">
           <div className="h-[85vh]">
             <PDFViewer width="100%" height="100%">
-              <CVPDFDocument />
+              <CVPDFDocument data={data} common={COMMON} />
             </PDFViewer>
           </div>
         </div>
