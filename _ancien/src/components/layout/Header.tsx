@@ -3,8 +3,8 @@
 // ─────────────────────────────────────────────────────────────────────────────
 
 import { useState, useEffect } from 'react'
-import { Menu, X } from 'lucide-react'
-import LangSwitcher from '../ui/LangSwitcher'
+import { Menu, X, Download } from 'lucide-react'
+import LangSwitcher from '../ui/Langswitcher'
 import { useLang }  from '../../i18n/LangContext'
 
 export default function Header() {
@@ -34,7 +34,7 @@ export default function Header() {
 
   // Détecte la section active pour surligner le lien nav
   useEffect(() => {
-    const ids = [...navItems.map((i) => i.href.slice(1)), 'cv']
+    const ids = navItems.map((i) => i.href.slice(1))
     const obs = new IntersectionObserver(
       (entries) => entries.forEach((e) => { if (e.isIntersecting) setActive(e.target.id) }),
       { rootMargin: '-40% 0px -50% 0px' }
@@ -80,18 +80,6 @@ export default function Header() {
               {item.label}
             </button>
           ))}
-
-          {/* Lien CV — mis en évidence */}
-          <button
-            onClick={() => scrollTo('#cv')}
-            className={`relative text-sm font-semibold transition-colors duration-200 px-2.5 py-1 rounded-lg ${
-              activeSection === 'cv'
-                ? 'bg-lavender-500 text-white'
-                : 'text-lavender-600 hover:bg-lavender-100'
-            }`}
-          >
-            {n.cv} ✦
-          </button>
         </nav>
 
         {/* ── DROITE : LangSwitcher + CTA ────────────────────────────── */}
@@ -100,12 +88,14 @@ export default function Header() {
           <LangSwitcher />
 
           {/* Bouton Télécharger CV */}
-<button
-  onClick={() => scrollTo('#cv')}
-  className="btn-primary text-xs px-4 py-2"
->
-  Voir mon CV
-</button>
+          <a
+            href="/cv.pdf"
+            download="CV_Abdrafith_ZONGO.pdf"
+            className="btn-primary text-xs px-4 py-2 inline-flex items-center gap-1.5"
+          >
+            <Download size={14} />
+            {n.downloadCv}
+          </a>
         </div>
 
         {/* ── TOGGLE MOBILE ──────────────────────────────────────────── */}
@@ -134,20 +124,16 @@ export default function Header() {
               {item.label}
             </button>
           ))}
-          <button
-            onClick={() => scrollTo('#cv')}
-            className="text-left text-sm font-semibold text-lavender-600"
-          >
-            {n.cv} ✦
-          </button>
           {/* Sélecteur de langue dans le menu mobile */}
           <LangSwitcher />
-          <button
-            onClick={() => { scrollTo('#cv'); setTimeout(() => window.print(), 600) }}
-            className="btn-primary text-xs self-start"
+          <a
+            href="/cv.pdf"
+            download="CV_Abdrafith_ZONGO.pdf"
+            className="btn-primary text-xs self-start inline-flex items-center gap-1.5"
           >
+            <Download size={14} />
             {n.downloadCv}
-          </button>
+          </a>
         </div>
       )}
     </header>

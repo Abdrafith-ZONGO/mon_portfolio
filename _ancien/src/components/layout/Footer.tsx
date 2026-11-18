@@ -1,10 +1,10 @@
 import { Github, Linkedin, Twitter, Mail, Heart } from 'lucide-react'
 
 const socials = [
-  { icon: Github,   href: 'https://github.com/tonpseudo',    label: 'GitHub' },
-  { icon: Linkedin, href: 'https://linkedin.com/in/tonpseudo', label: 'LinkedIn' },
+  { icon: Github,   href: 'https://github.com/Abdrafith-ZONGO',    label: 'GitHub' },
+  { icon: Linkedin, href: 'https://www.linkedin.com/in/abdrafith-zongo-31a6b9265', label: 'LinkedIn' },
   { icon: Twitter,  href: 'https://twitter.com/tonpseudo',    label: 'Twitter' },
-  { icon: Mail,     href: 'mailto:ton@email.com',             label: 'Email' },
+  { icon: Mail,     href: 'mailto:zongo1abdrafith@gmail.com',             label: 'Email' },
 ]
 
 const navCols = [
@@ -35,10 +35,10 @@ export default function Footer() {
           {/* Brand */}
           <div className="md:col-span-2">
             <div className="font-syne font-bold text-2xl text-[#1e1b4b] mb-3">
-              <span className="text-lavender-500">&lt;</span>MonPortfolio<span className="text-lavender-500"> /&gt;</span>
+              <span className="text-lavender-500">&lt;</span>AZ<span className="text-lavender-500"> /&gt;</span>
             </div>
             <p className="text-sm text-[#9ca3af] leading-relaxed max-w-xs">
-              Dev Full Stack & Data Analyst basé à Ouagadougou.
+              Data Scientist & Full Stack Developer basé à Ouagadougou.
               Passionné par la création d'expériences web et l'analyse de données.
             </p>
             <div className="flex items-center gap-3 mt-6">

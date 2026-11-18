@@ -5,15 +5,15 @@ import {
 } from 'lucide-react'
 
 const socials = [
-  { icon: Github,   href: 'https://github.com/tonpseudo',     label: 'GitHub',   color: '#1e1b4b' },
-  { icon: Linkedin, href: 'https://linkedin.com/in/tonpseudo', label: 'LinkedIn', color: '#0077b5' },
+  { icon: Github,   href: 'https://github.com/Abdrafith-ZONGO',     label: 'GitHub',   color: '#1e1b4b' },
+  { icon: Linkedin, href: 'https://www.linkedin.com/in/abdrafith-zongo-31a6b9265', label: 'LinkedIn', color: '#0077b5' },
   { icon: Twitter,  href: 'https://twitter.com/tonpseudo',    label: 'Twitter',  color: '#1da1f2' },
-  { icon: Mail,     href: 'mailto:ton@email.com',             label: 'Email',    color: '#8b5cf6' },
+  { icon: Mail,     href: 'mailto:zongo1abdrafith@gmail.com',             label: 'Email',    color: '#8b5cf6' },
 ]
 
 const infos = [
-  { icon: Mail,    label: 'Email',        value: 'ton@email.com' },
-  { icon: Phone,   label: 'Téléphone',    value: '+226 XX XX XX XX' },
+  { icon: Mail,    label: 'Email',        value: 'zongo1abdrafith@gmail.com' },
+  { icon: Phone,   label: 'Téléphone',    value: '+226 07 71 32 17' },
   { icon: MapPin,  label: 'Localisation', value: 'Ouagadougou, Burkina Faso' },
 ]
 
@@ -60,7 +60,7 @@ export default function Contact() {
     const body = encodeURIComponent(
       `Bonjour,\n\nNom: ${form.name}\nEmail: ${form.email}\n\n${form.message}\n\n---\nEnvoyé depuis le portfolio`
     )
-    const mailtoUrl = `mailto:ton@email.com?subject=${subject}&body=${body}`
+    const mailtoUrl = `mailto:zongo1abdrafith@gmail.com?subject=${subject}&body=${body}`
 
     setTimeout(() => {
       window.location.href = mailtoUrl

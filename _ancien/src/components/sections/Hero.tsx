@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react'
 import { Github, Linkedin, Download, ArrowDown, ChevronRight } from 'lucide-react'
 import { stats } from '../../data/experiences'
+import photoProfil from '../../assets/photoProfil.jpeg'
 
 const socials = [
   { icon: Github,   href: 'https://github.com/Abdrafith-ZONGO',     label: 'GitHub' },
@@ -51,7 +52,7 @@ export default function Hero() {
             {/* Available badge */}
             <div className="hero-anim opacity-0 inline-flex items-center gap-2 badge mb-6">
               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse-slow" />
-              Ouvert aux collaborations
+              Ouvert aux opportunités & collaborations
             </div>
 
             {/* Name */}
@@ -71,62 +72,73 @@ export default function Hero() {
 
             {/* Role pills */}
             <div className="hero-anim opacity-0 flex flex-wrap justify-center lg:justify-start gap-2 mb-5">
-              <span className="badge text-sm">⚡ Dev Full Stack</span>
               <span
-                className="inline-flex items-center gap-1.5 text-xs font-medium px-3 py-1 rounded-full"
+                className="inline-flex items-center gap-1.5 text-xs font-semibold px-3 py-1 rounded-full"
                 style={{
-                  background: 'rgba(6,182,212,0.1)',
-                  border: '1px solid rgba(6,182,212,0.25)',
+                  background: 'rgba(6,182,212,0.12)',
+                  border: '1px solid rgba(6,182,212,0.3)',
                   color: '#0891b2',
                 }}
               >
-                📊 Data Analyst
+                📊 Data Scientist & IA
+              </span>
+              <span className="badge text-xs font-semibold">⚡ Full Stack Developer</span>
+              <span
+                className="inline-flex items-center gap-1.5 text-xs font-semibold px-3 py-1 rounded-full"
+                style={{
+                  background: 'rgba(16,185,129,0.12)',
+                  border: '1px solid rgba(16,185,129,0.3)',
+                  color: '#059669',
+                }}
+              >
+                ⚙️ DevOps & MLOps
               </span>
             </div>
 
-                  {/* Tagline - Deux volets */}
-                  <p className="hero-anim opacity-0 text-[#4b5563] text-lg leading-relaxed max-w-lg mx-auto lg:mx-0 mb-3">
-                    <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-lavender-100 text-lavender-600 mr-2">
-                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                        <rect x="2" y="3" width="20" height="14" rx="2" stroke="currentColor" fill="none"/>
-                        <path d="M8 21H16" stroke="currentColor" strokeLinecap="round"/>
-                        <path d="M12 17V21" stroke="currentColor" strokeLinecap="round"/>
-                        <path d="M12 7V3" stroke="currentColor" strokeLinecap="round"/>
-                      </svg>
-                    </span>
-                    <strong className="text-[#1e1b4b] font-semibold">Développeur Full Stack</strong> — je conçois des sites web, des applications web, des applications mobiles et j'intègre des solutions IA. Je transforme vos idées en produits digitaux.
-                  </p>
-                  <p className="hero-anim opacity-0 text-[#4b5563] text-lg leading-relaxed max-w-lg mx-auto lg:mx-0 mb-6">
-                    <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-lavender-100 text-lavender-600 mr-2">
-                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                        <path d="M3 3V21H21V3H3Z" stroke="currentColor" fill="none"/>
-                        <path d="M7 7H17" stroke="currentColor" strokeLinecap="round"/>
-                        <path d="M7 12H14" stroke="currentColor" strokeLinecap="round"/>
-                        <path d="M7 17H11" stroke="currentColor" strokeLinecap="round"/>
-                      </svg>
-                    </span>
-                    <strong className="text-[#1e1b4b] font-semibold">Data Analyst</strong> — j'analyse, modélise et visualise vos données pour en faire un levier stratégique et éclairer vos décisions.
-                  </p>
-                  <p className="hero-anim opacity-0 text-sm text-[#9ca3af] flex items-center gap-3 justify-center lg:justify-start">
-                    <span>📍 Basé à Ouagadougou</span>
-                    <span className="w-1 h-1 rounded-full bg-lavender-300"></span>
-                    <span>🌍 Disponible en remote</span>
-                  </p>
+            {/* Tagline - Deux volets */}
+            <p className="hero-anim opacity-0 text-[#4b5563] text-base sm:text-lg leading-relaxed max-w-lg mx-auto lg:mx-0 mb-3">
+              <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-cyan-100 text-cyan-700 mr-2">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M3 3V21H21V3H3Z" stroke="currentColor" fill="none"/>
+                  <path d="M7 7H17" stroke="currentColor" strokeLinecap="round"/>
+                  <path d="M7 12H14" stroke="currentColor" strokeLinecap="round"/>
+                  <path d="M7 17H11" stroke="currentColor" strokeLinecap="round"/>
+                </svg>
+              </span>
+              <strong className="text-[#1e1b4b] font-semibold">Data Scientist</strong> — Master Sciences des Données (UJKZ) & Licence Statistiques et Informatique. Traitement, modélisation prédictive (ML/DL, Computer Vision) et valorisation décisionnelle (Python, R, Stata, Power BI).
+            </p>
+            <p className="hero-anim opacity-0 text-[#4b5563] text-base sm:text-lg leading-relaxed max-w-lg mx-auto lg:mx-0 mb-6">
+              <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-lavender-100 text-lavender-600 mr-2">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <rect x="2" y="3" width="20" height="14" rx="2" stroke="currentColor" fill="none"/>
+                  <path d="M8 21H16" stroke="currentColor" strokeLinecap="round"/>
+                  <path d="M12 17V21" stroke="currentColor" strokeLinecap="round"/>
+                  <path d="M12 7V3" stroke="currentColor" strokeLinecap="round"/>
+                </svg>
+              </span>
+              <strong className="text-[#1e1b4b] font-semibold">Développeur Full Stack</strong> — Conception, intégration et mise en production de plateformes web, solutions SaaS et architectures de gestion (React, Next.js, Spring Boot, PostgreSQL, Docker, Odoo).
+            </p>
+            <p className="hero-anim opacity-0 text-sm text-[#9ca3af] flex items-center gap-3 justify-center lg:justify-start">
+              <span>📍 Ouagadougou, Burkina Faso</span>
+              <span className="w-1 h-1 rounded-full bg-lavender-300"></span>
+              <span>🌍 Disponible en présentiel & remote</span>
+            </p>
 
             {/* CTA buttons */}
-            <div className="hero-anim opacity-0 flex flex-wrap justify-center lg:justify-start gap-3 mb-10">
+            <div className="hero-anim opacity-0 flex flex-wrap justify-center lg:justify-start gap-3 mb-10 mt-6">
               <button
                 onClick={() => document.querySelector('#projects')?.scrollIntoView({ behavior: 'smooth' })}
                 className="btn-primary"
               >
-                Voir mes projets <ChevronRight size={16} />
+                Voir mes réalisations <ChevronRight size={16} />
               </button>
-          <button
-            onClick={() => document.querySelector('#cv')?.scrollIntoView({ behavior: 'smooth' })}
-            className="btn-secondary"
-          >
-            <Download size={16} /> Voir mon CV
-          </button>
+              <a
+                href="/cv.pdf"
+                download="CV_Abdrafith_ZONGO.pdf"
+                className="btn-secondary inline-flex items-center gap-2"
+              >
+                <Download size={16} /> Télécharger mon CV
+              </a>
             </div>
 
             {/* Social links */}
@@ -158,13 +170,11 @@ export default function Hero() {
                 <div
                   className="w-64 h-64 lg:w-72 lg:h-72 rounded-[26px] overflow-hidden bg-gradient-to-br from-lavender-100 to-blue-100 flex items-center justify-center"
                 >
-                  {/* Replace src with your actual photo path */}
                   <img
-                    src="/src/assets/photoProfil.jpeg"
-                    alt="Photo de profil"
+                    src={photoProfil}
+                    alt="Photo de profil Abdrafith ZONGO"
                     className="w-full h-full object-cover"
                     onError={(e) => {
-                      // Fallback placeholder if image not found
                       const target = e.currentTarget
                       target.style.display = 'none'
                       target.parentElement!.innerHTML = `
@@ -185,13 +195,13 @@ export default function Hero() {
                 className="absolute -left-8 top-8 glass rounded-xl px-3 py-2 text-xs font-medium text-[#1e1b4b] shadow-md animate-float"
                 style={{ animationDelay: '0s' }}
               >
-                <span className="text-lavender-500 font-mono mr-1">3+</span> ans d'exp.
+                <span className="text-lavender-500 font-mono mr-1">Master</span> Data Science
               </div>
               <div
                 className="absolute -right-8 bottom-8 glass rounded-xl px-3 py-2 text-xs font-medium text-[#1e1b4b] shadow-md animate-float"
                 style={{ animationDelay: '2s' }}
               >
-                <span className="text-cyan-500 font-mono mr-1">12+</span> projets
+                <span className="text-cyan-500 font-mono mr-1">2ème</span> Prix CIF-AO
               </div>
             </div>
           </div>
